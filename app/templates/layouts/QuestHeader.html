@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/Main.css">
+    <link rel="stylesheet" href="/static/css/Quest.css">
+    {% block links %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <section class="back">
+            <a href="/">
+                <img src="/static/images/icons/back.svg" alt="Back" />
+            </a>
+        </section>
+        <section class="menu">
+            <a href="/quest/{{ quest.uid }}/passport">Паспорт</a>
+            <a href="/quest/{{ quest.uid }}/conditions">Условия</a>
+            <a href="/quest/{{ quest.uid }}/flags">Флаги</a>
+            <a href="/quest/{{ quest.uid }}/map">Карта</a>
+            <a href="/quest/{{ quest.uid }}/export">Экспорт</a>
+        </section>
+
+        <section class="save">
+            <button onclick="SaveQuest('{{ quest.uid }}');">
+                <img src="/static/images/icons/save.svg" alt="Save" />
+            </button>
+        </section>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {% block js %}{% endblock %}
+</body>
+</html>

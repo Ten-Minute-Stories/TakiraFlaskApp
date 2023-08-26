@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Квесты</title>
+    <link href="/static/css/Main.css" rel="stylesheet">
+    <link href="/static/css/Quests.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <section class="exit">
+            <a href="/action/logout">
+                <img src="/static/images/icons/exit.svg" alt="Logout" />
+            </a>
+        </section>
+        <section class="grid">
+            <label>Отображение</label>
+            <div class="grid-variants">
+                <a href="/action/change_grid/lists">Списком</a>
+                <a href="/action/change_grid/blocks">Блоками</a>
+            </div>
+        </section>
+        <section class="categories">
+            <a href="/" {% if selected_act == 1 %} class="selected" {% endif %}>Акт I</a>
+            <a href="/?act=2" {% if selected_act == 2 %} class="selected" {% endif %}>Акт II</a>
+            <a href="/?act=3" {% if selected_act == 3 %} class="selected" {% endif %}>Акт III</a>
+            <a href="/?act=-1" {% if selected_act == -1 %} class="selected" {% endif %}>Все квесты</a>
+        </section>
+    </header>
+    <main>
+        <h1>Квесты: <b>Акт I</b></h1>
+        <div class="main-actions">
+            <a href="/action/new_quest">Новый квест</a>
+            <a href="/action/import_quest">Импорт квеста</a>
+        </div>
+        <section class="quests">
+            {% for quest in quests.values() %}
+                {% if selected_act == -1 or quest.act == selected_act %}
+                    <div class="quest">
+                        <img src="{{ quest.image_url }}" class="quest-preview" alt="Quest preview" />
+                        <h2>{{ quest.name }}</h2>
+                        <h3>{{ quest.author }}</h3>
+                        <div class="quest-action-buttons">
+                            <a href="/quest/{{ quest.uid }}">
+                                <img src="/static/images/icons/edit.svg" alt="Edit" />
+                            </a>
+                            <a href="/quest/{{ quest.uid }}/export">
+                                <img src="/static/images/icons/export.svg" alt="Export" />
+                            </a>
+                            <a href="/action/remove_quest/{{ quest.uid }}">
+                                <img src="/static/images/icons/delete.svg" alt="Delete" />
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

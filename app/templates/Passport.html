@@ -1,0 +1,60 @@
+{% extends "layouts/QuestHeader.html" %}
+
+{% block links %}
+    <link href="/static/css/Passport.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}Паспорт{% endblock %}
+
+
+{% block content %}
+    <h1>Паспорт</h1>
+    <section class="column">
+        <div>
+            <label>Название</label>
+            <input type="text" id="name" placeholder="От 2 до 32 символов" value="{{ quest.name }}">
+        </div>
+        <div>
+            <label>Описание</label>
+            <textarea id="desc">{{ quest.description }}</textarea>
+        </div>
+        <div>
+            <label>Список тегов</label>
+            <input type="text" id="tags" placeholder="Нажмите ENTER для добавления тега">
+            <div class="tags">
+                {% for tag in quest.tags %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="column">
+        <div>
+            <label>Автор</label>
+            <p>{{ quest.author }}</p>
+        </div>
+        <div>
+            <label>Сюжетный акт</label>
+            <select id="act">
+                <option value="1">Акт I</option>
+                <option value="2">Акт II</option>
+                <option value="3">Акт III</option>
+            </select>
+        </div>
+        <div>
+            <label>Дегенеративные картинки</label>
+            <input type="checkbox" id="generate_images">
+        </div>
+        <div>
+            <label>Частота мира</label>
+            <input type="number" id="world_rate" placeholder="Число" value="{{ quest.world_rate }}">
+            <button id="rnd-btn"><img src="/static/images/icons/random.svg" alt="Random"/></button>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block js %}
+    <script src="/static/js/Passport.js"></script>
+{% endblock %}

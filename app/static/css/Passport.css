@@ -1,0 +1,68 @@
+main
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 4vh;
+}
+
+h1
+{
+
+width: 100%;
+
+text-align: center;
+
+margin: 2vh;
+
+font-size: 2.4vh;
+
+font-weight: 600;
+}
+
+.column
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    min-width: 42vw;
+}
+
+.column div
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1vh;
+    width: 100%;
+}
+
+label
+{
+    margin: 1vh;
+}
+
+input,
+select,
+textarea
+{
+    border: #545454 solid 1px;
+    border-radius: 1vh;
+    padding: 1vh 2vh;
+    margin: 1vh;
+    min-width: 28vw;
+}
+
+button img
+{
+    width: 4vh;
+}

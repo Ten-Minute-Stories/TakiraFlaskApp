@@ -1,0 +1,32 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 4vh;
+}
+
+h1
+{
+    font-size: 4vh;
+}
+
+p
+{
+    font-size: 2.4vh;
+    margin: 0;
+    padding: 0.2vh;
+}
+
+a
+{
+    font-size: 3vh;
+    margin: 4vh;
+    text-decoration: none;
+    background-color: #fdadad;
+    padding: 1vh 2vh;
+    border-radius: 2vh;
+}

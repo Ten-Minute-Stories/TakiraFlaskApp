@@ -1,0 +1,379 @@
+main
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+h2
+{
+    width: 100%;
+    text-align: center;
+    font-size: 2.4vh;
+    font-weight: 600;
+    margin: 2vh;
+}
+
+section
+{
+    margin: 1vh 2vh;
+}
+
+.inspector
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    max-width: 40%;
+}
+
+.inspector label
+{
+
+}
+
+.inspector input,
+.inspector select,
+.inspector textarea
+{
+
+}
+
+.blue-button
+{
+    margin: 1vh;
+    color: #000000;
+    padding: 1vh 4vh;
+    background-color: #99d5ff;
+
+    border-radius: 1vh;
+
+    transition: border-radius 0.5s,
+                background-color 0.5s;
+}
+
+.blue-button:hover
+{
+    background-color: #68b9eb;
+    cursor: pointer;
+
+    border-radius: 1.2vh;
+
+    transition: border-radius 0.5s,
+                background-color 0.5s;
+}
+
+.nodes
+{
+    width: 94vh;
+    height: 54vh;
+    background-color: #eee;
+    border-radius: 2vh;
+    margin: 2vh;
+}
+
+.node
+{
+    position: absolute;
+    width: 7vh;
+    height: 3vh;
+    text-align: center;
+    background-color: #69e9f1;
+    color: #fff;
+    border-radius: 1vh;
+    padding: 1vh;
+    font-size: 1.2vh;
+}
+
+.node:hover
+{
+    cursor: pointer;
+}
+
+.available-nodes
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.available-node
+{
+    margin: 1vh;
+    padding: 3vh;
+    background-color: #9ee09c;
+    color: #06420b;
+    border-radius: 2vh;
+
+    transition: background-color .5s,
+                color .5s;
+}
+
+.available-node:hover
+{
+    cursor: pointer;
+
+    background-color: #71c36f;
+    color: #07340a;
+
+    transition: background-color 0.5s,
+                color .5s;
+}
+
+.section
+{
+    display: flex;
+    width: 100%;
+    min-height: 94vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.actions-and-events
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.actions-and-events row
+{
+    margin: 2vh;
+    width: 26vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 80vh;
+    border-radius: 2vh;
+    border: 1px #0000005e solid;
+}
+
+.unavailable
+{
+    background-color: #dadada;
+}
+
+.action-buttons
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-button
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-button input
+{
+    min-width: 10vh;
+}
+
+.inspector a
+{
+    margin-bottom: 2vh;
+}
+
+.action-button button
+{
+    padding: 1vh;
+    border-radius: 1vh;
+    margin: 1vh;
+    background-color: #ffd5d5;
+}
+
+.action-button button:hover
+{
+    padding: 1vh;
+    background-color: #fb9292;
+    cursor: pointer;
+}
+
+.events,
+.objects,
+.actions
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.events label,
+.objects label,
+.actions label
+{
+    margin: 0.5vh;
+    font-size: 2vh;
+}
+
+.events input,
+.objects input,
+.actions input
+{
+    min-width: 36vh;
+}
+
+.event,
+.object,
+.action
+{
+    position: relative;
+    display: flex;
+    max-width: 22vw;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    padding: 2vh;
+    margin-bottom: 1vh;
+    transition: background-color 0.5s;
+}
+
+.event:hover,
+.object:hover,
+.action:hover
+{
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.event {background-color: #e9f6ff;}
+.event:hover {background-color: #d2ecfe;}
+.object {background-color: #f1ccd3;}
+.object:hover {background-color: #f0b5c0;}
+.action {background-color: #d1f097;}
+.action:hover {background-color: #caee86;}
+.events input {background-color: #d1ecff;}
+.objects input {background-color: #f8bccb;}
+.actions input {background-color: #c2f266;}
+
+.event-objects,
+.object-actions
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.group
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1vh;
+}
+
+.group span
+{
+    padding: 0.4vh;
+    margin: 0.4vh;
+    border-radius: 0.5vh;
+}
+
+.event .group span {background-color: #0278ff30;}
+.object .group span {background-color: rgba(198, 22, 5, 0.19);}
+.action .group span {background-color: rgba(6, 168, 58, 0.19);}
+
+.selected.event {background-color: #7db7df;}
+.selected.object {background-color: #e38192;}
+.selected.action {background-color: #b2e063;}
+.selected.event:hover {background-color: #7db7df;}
+.selected.object:hover {background-color: #e38192;}
+.selected.action:hover {background-color: #b2e063;}
+
+#remover
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1vh 2vh;
+    opacity: 0.3;
+
+    transition: opacity 0.5s;
+}
+
+#remover:hover
+{
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.node.Start {background-color: #34f338; color: #006502;}
+.node.Action {background-color: #34cdf3; color: #004b5b;}
+.node.Checkpoint {background-color: #f3c934; color: #624e00;}
+.node.End {background-color: #f35634; color: #5c1100;}
+.node.picked {border: 1px solid #494949; border-radius: 2vh;}
+
+.link-directions
+{
+    display: none;
+}
+
+.link-directions span
+{
+    position: absolute;
+}
+
+.link-directions span#up
+{
+    top: -2.5vh;
+    left: 45%;
+}
+
+.link-directions span#right
+{
+    bottom: 35%;
+    right: -1.5vh;
+}
+
+.link-directions span#down
+{
+    bottom: -2vh;
+    right: 45%;
+}
+
+.link-directions span#left
+{
+    bottom: 35%;
+    left: -1.5vh;
+}
+
+#line
+{
+    stroke: blue;
+    stroke-width: 2;
+}

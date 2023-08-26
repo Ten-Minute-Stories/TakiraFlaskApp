@@ -1,0 +1,42 @@
+{% extends "layouts/QuestHeader.html" %}
+
+{% block links %}
+    <link href="/static/css/Conditions.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}Условия{% endblock %}
+
+
+{% block content %}
+    <section class="column">
+        <h2>Текущее условие</h2>
+        <div class="conditions">
+            <a href="/action/add_condition">Новое условие</a>
+        </div>
+    </section>
+    <section class="column">
+        <h2>Если</h2>
+        <select id="condition-type-changer">
+            <option>Флаг</option>
+            <option>Переменная</option>
+            <option>Объект</option>
+            <option>Квест</option>
+        </select>
+        <input id="type" type="text" name="type">
+    </section>
+    <section class="column">
+        <h2>Имеет значение</h2>
+        <select id="value-type-changer">
+            <option>Логическое</option>
+            <option>Текст</option>
+            <option>Число</option>
+        </select>
+        <input id="value" type="hidden" name="value">
+    </section>
+{% endblock %}
+
+
+{% block js %}
+    <script src="/static/js/Conditions.js"></script>
+{% endblock %}

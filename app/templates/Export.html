@@ -1,0 +1,17 @@
+{% extends "layouts/QuestHeader.html" %}
+
+{% block links %}
+    <link href="/static/css/Export.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}Экспорт{% endblock %}
+
+
+{% block content %}
+    <section class="export">
+        <h1>Экспорт</h1>
+        <a href="/export/{{ quest.uid }}/etw">Экспорт в формате .etw</a>
+        <a href="/export/{{ quest.uid }}/tw">Экспорт в формате .tw</a>
+    </section>
+{% endblock %}
