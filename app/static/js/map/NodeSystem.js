@@ -79,6 +79,7 @@ function CreateNode(nodeType)
                 return;
             }
 
+            // TODO: Допилить линковку
             if (pickedLink === e.target) return;
 
         });
@@ -129,11 +130,29 @@ nodesParent.addEventListener('mouseup', (e) =>
         pickedNode = undefined;
 });
 
-nodesParent.addEventListener('mousemove', (e) =>
+window.addEventListener('mousemove', (e) =>
 {
-    if (pickedNode !== undefined)
-    {
+    if (pickedNode === undefined)
+        return;
+
+    if (!isOutOfHorizontalBounds(e))
         pickedNode.style.left = `${e.clientX - pickedNode.clientWidth/2}px`;
+    if (!isOutOfVerticalBounds(e))
         pickedNode.style.top = `${e.clientY - pickedNode.clientHeight/2}px`;
-    }
 });
+
+function isOutOfHorizontalBounds(e){
+    let border = document.getElementsByClassName("nodes")
+    let borderLeft = border[0].offsetLeft;
+    let borderRight = borderLeft + border[0].offsetWidth;
+    return  pickedNode.clientWidth / 2 + e.clientX < borderLeft + pickedNode.clientWidth ||
+            pickedNode.clientWidth / 2 + e.clientX > borderRight;
+}
+
+function isOutOfVerticalBounds(e){
+    let border = document.getElementsByClassName("nodes")
+    let borderTop = border[0].offsetTop;
+    let borderBottom = borderTop + border[0].offsetHeight;
+    return  pickedNode.clientHeight / 2 + e.clientY < borderTop + pickedNode.clientHeight ||
+            pickedNode.clientHeight / 2 + e.clientY > borderBottom;
+}
