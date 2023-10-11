@@ -19,7 +19,7 @@ const actionButtons = document.querySelector("#action-buttons");
 const defaultActionButton = document.querySelector("#default-action-button").cloneNode(true);
 defaultActionButton.id = '';
 
-let actionButtonsCount = 1;
+let actionButtonsCount = 0;
 
 newActionButton.addEventListener('click', (e) =>
 {

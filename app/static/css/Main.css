@@ -10,3 +10,8 @@
     font-weight: 400;
     font-family: 'Roboto Condensed', sans-serif;
 }
+
+.defaults
+{
+    display: none;
+}

@@ -71,24 +71,34 @@ section
 
 .nodes
 {
+    position: relative;
+    width: 256vh;
+    height: 256vh;
+    background-color: #eee;
+}
+
+.nodes-view
+{
     width: 94vh;
     height: 54vh;
     background-color: #eee;
     border-radius: 2vh;
     margin: 2vh;
+    overflow: auto;
 }
 
 .node
 {
     position: absolute;
-    width: 7vh;
-    height: 3vh;
+    width: 5vh;
+    height: 2vh;
     text-align: center;
     background-color: #69e9f1;
     color: #fff;
-    border-radius: 1vh;
-    padding: 1vh;
+    border-radius: 0.4vh;
+    padding: 0.5vh;
     font-size: 1.2vh;
+    z-index: 2;
 }
 
 .node:hover
@@ -336,7 +346,7 @@ section
 .node.Action {background-color: #34cdf3; color: #004b5b;}
 .node.Checkpoint {background-color: #f3c934; color: #624e00;}
 .node.End {background-color: #f35634; color: #5c1100;}
-.node.picked {border: 1px solid #494949; border-radius: 2vh;}
+.node.picked {border: 1px solid #494949; border-radius: 0.5vh;}
 
 .link-directions
 {
@@ -372,8 +382,12 @@ section
     left: -1.5vh;
 }
 
-#line
+.link
 {
-    stroke: blue;
-    stroke-width: 2;
+    position: absolute;
+    height: 1px;
+    background: #433a3a;
+    text-align: center;
+    z-index: 1;
+    opacity: 0.4;
 }

@@ -12,67 +12,65 @@
     <div class="section">
         <section class="map">
             <h2>Карта</h2>
-            <div class="nodes">
-                <div style="display: none;" class="node" id="default-node">
-                    Test
-                    <div class="link-directions">
-                        <span id="up">o</span>
-                        <span id="right">o</span>
-                        <span id="down">o</span>
-                        <span id="left">o</span>
+            <div class="links"></div>
+            <div class="nodes-view">
+                <div class="nodes">
+                    <div style="display: none;" class="node" id="default-node">
+                        Test
+                        <div class="link-directions">
+                            <span id="up">o</span>
+                            <span id="right">o</span>
+                            <span id="down">o</span>
+                            <span id="left">o</span>
+                        </div>
                     </div>
                 </div>
-
-                <svg id="for-lines"></svg>
             </div>
             <div class="available-nodes">
                 <h2>Доступные ноды</h2>
-                <button onclick="CreateNode('Start');" class="available-node">Начало</button>
-                <button onclick="CreateNode('Action');" class="available-node">Действие</button>
-                <button onclick="CreateNode('Checkpoint');" class="available-node">Чекпоинт</button>
-                <button onclick="CreateNode('End');" class="available-node">Конец</button>
+                <button onclick="map.Add('Start');" class="available-node">Начало</button>
+                <button onclick="map.Add('Action');" class="available-node">Действие</button>
+                <button onclick="map.Add('Checkpoint');" class="available-node">Чекпоинт</button>
+                <button onclick="map.Add('End');" class="available-node">Конец</button>
             </div>
         </section>
 
         <section class="inspector">
             <h2>Данные ноды</h2>
+
             <label>Индекс</label>
-            <input onchange="InspectorNodeEdit(this);" type="number" id="index" name="index">
+            <input class="inspector-input" type="number" id="index" name="index">
             <label>Название</label>
-            <input onchange="InspectorNodeNamed(this);" type="text" id="name" name="name">
+            <input class="inspector-input" type="text" id="name" name="name">
             <label>Текст панели</label>
-            <textarea id="text" onchange="InspectorNodeEdit(this);"></textarea>
+            <textarea id="text" class="inspector-input"></textarea>
             <label>URL Картинки</label>
-            <input onchange="InspectorNodeEdit(this);" type="text" id="image_url" name="image_url">
+            <input class="inspector-input" type="text" id="image_url" name="image_url">
+
             <a href="#actions-and-events" class="blue-button">К событиям и действиям</a>
 
             <div class="action-buttons">
                 <h2>Кнопки действия</h2>
                 <div id="action-buttons">
-                    <div class="action-button" id="default-action-button">
-                        <input type="text" placeholder="Текст кнопки">
-                        <input type="text" placeholder="ID кнопки">
-                        <button class="action-button-remove">❌</button>
+                    <div class="hidden-button" style="display: none">
+                        <div class="action-button" id="default-action-button">
+                            <input type="text" placeholder="Текст кнопки">
+                            <input type="text" placeholder="ID кнопки">
+                            <button class="action-button-remove">❌</button>
+                        </div>
                     </div>
                 </div>
                 <button id="new-action-button" class="blue-button">Ещё одна кнопка</button>
             </div>
         </section>
-
-
     </div>
+
+
     <div class="section">
         <section class="actions-and-events" id="actions-and-events">
-            <row>
+            <row id="events-row" class="unavailable">
                 <h2>События</h2>
                 <div class="events">
-                    <div class="event" id="default-event" style="display: none">
-                        {#<label>Группа событий:</label>#}
-                        <div class="group"></div>
-                        <input type="text" placeholder="Событие">
-                        <a onclick="Remove(this);" id="remover">❌</a>
-                    </div>
-
                     {% for event_group in quest.events %}
                         <div class="event loaded"  id="{{ event_group['ID'] }}" >
                             {% if event_group['Linked'] != '' %}
@@ -84,22 +82,17 @@
                                 {% endfor %}
                             </div>
                             <input type="text" placeholder="Событие">
-                            <a onclick="Remove(this);" id="remover">❌</a>
+                            <a id="remover">❌</a>
                         </div>
                     {% endfor %}
                 </div>
-                <button onclick="CreateEvent();" id="new-event" class="blue-button">Новое событие</button>
+
+                <button id="new-event" class="blue-button">Новое событие</button>
             </row>
+
             <row id="objects-row" class="unavailable">
                 <h2>Объекты</h2>
                 <div class="objects">
-                    <div class="object" id="default-object" style="display: none">
-                        {#<label>Группа объектов:</label>#}
-                        <div class="group"></div>
-                        <input type="text" placeholder="Объект">
-                        <a onclick="Remove(this);" id="remover">❌</a>
-                    </div>
-
                     {% for obj_group in quest.objects %}
                         <div class="object loaded" id="{{ obj_group['ID'] }}" style="display: none">
                             {% if obj_group['Linked'] != '' %}
@@ -111,22 +104,17 @@
                                 {% endfor %}
                             </div>
                             <input type="text" placeholder="Объект">
-                            <a onclick="Remove(this);" id="remover">❌</a>
+                            <a id="remover">❌</a>
                         </div>
                     {% endfor %}
-                    <div class="event-objects" id="default-objects" style="display: none"></div>
                 </div>
-                <button onclick="CreateObject();" id="new-object" class="blue-button">Новый объект</button>
+
+                <button id="new-object" class="blue-button">Новый объект</button>
             </row>
+
             <row id="actions-row"  class="unavailable">
                 <h2>Действия</h2>
                 <div class="actions">
-                    <div class="action" id="default-action" style="display: none">
-                        {#<label>Группа действий:</label>#}
-                        <div class="group"></div>
-                        <input type="text" placeholder="Действие">
-                        <a onclick="Remove(this);" id="remover">❌</a>
-                    </div>
 
                     {% for action_group in quest.actions %}
                         <div class="action loaded" id="{{ action_group['ID'] }}" style="display: none">
@@ -136,19 +124,48 @@
                                 {% endfor %}
                             </div>
                             <input type="text" placeholder="Действие">
-                            <a onclick="Remove(this);" id="remover">❌</a>
+                            <a id="remover">❌</a>
                         </div>
                     {% endfor %}
-                    <div class="object-actions" id="default-actions" style="display: none"></div>
                 </div>
-                <button onclick="CreateAction();" id="new-action" class="blue-button">Новое действие</button>
+
+                <button id="new-action" class="blue-button">Новое действие</button>
             </row>
         </section>
     </div>
+
+    <div class="defaults">
+
+        <div class="event" id="default-event">
+            {#<label>Группа событий:</label>#}
+            <div class="group"></div>
+            <input type="text" placeholder="Событие">
+            <a id="remover">❌</a>
+        </div>
+
+        <div class="action" id="default-action">
+            {#<label>Группа действий:</label>#}
+            <div class="group"></div>
+            <input type="text" placeholder="Действие">
+            <a id="remover">❌</a>
+        </div>
+
+        <div class="object" id="default-object">
+            {#<label>Группа объектов:</label>#}
+            <div class="group"></div>
+            <input type="text" placeholder="Объект">
+            <a id="remover">❌</a>
+        </div>
+
+        <div class="event-objects" id="default-objects"></div>
+
+        <div class="object-actions" id="default-actions"></div>
+    </div>
+
 {% endblock %}
 
+
 {% block js %}
-    <script src="/static/js/map/NodeSystem.js"></script>
+    <script src="/static/js/map/NodeMap.js"></script>
     <script src="/static/js/map/ActionButtons.js"></script>
-    <script src="/static/js/map/ActionsAndEvents.js"></script>
 {% endblock %}
