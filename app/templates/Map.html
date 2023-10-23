@@ -28,10 +28,10 @@
             </div>
             <div class="available-nodes">
                 <h2>Доступные ноды</h2>
-                <button onclick="map.Add('Start');" class="available-node">Начало</button>
-                <button onclick="map.Add('Action');" class="available-node">Действие</button>
-                <button onclick="map.Add('Checkpoint');" class="available-node">Чекпоинт</button>
-                <button onclick="map.Add('End');" class="available-node">Конец</button>
+                <button onclick="NewNode('Start');" class="available-node">Начало</button>
+                <button onclick="NewNode('Action');" class="available-node">Действие</button>
+                <button onclick="NewNode('Checkpoint');" class="available-node">Чекпоинт</button>
+                <button onclick="NewNode('End');" class="available-node">Конец</button>
             </div>
         </section>
 
@@ -166,6 +166,12 @@
 
 
 {% block js %}
-    <script src="/static/js/map/NodeMap.js"></script>
+    <script type="module">
+        import {map} from '/static/js/map/NodeMap.js';
+        window.NewNode = (nodeType) => map.Add(nodeType)
+        //function NewNode(nodeType) {map.Add(nodeType);}
+
+        const buttons = document.querySelectorAll('.available-node');
+    </script>
     <script src="/static/js/map/ActionButtons.js"></script>
 {% endblock %}

@@ -550,7 +550,7 @@ class ActionsManager
 let zIndex = 0;
 let maxID = 0;
 
-const defaultNode = document.querySelector("#default-node");
+export const defaultNode = document.querySelector("#default-node");
 const links = document.querySelector('.links');
 
 const map = new Map();
