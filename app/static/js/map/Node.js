@@ -1,6 +1,9 @@
 import {eventsManager, defaultNode} from "./NodeMap.js";
 
+const maxDisplayNameLength = 12;
+
 let maxID = 0;
+
 export class Node
 {
     name = '';
@@ -17,6 +20,9 @@ export class Node
     link_directions_element = undefined;
 
     links = [];
+
+    x = 0;
+    y = 0;
 
     constructor(type)
     {
@@ -37,10 +43,10 @@ export class Node
 
     ShowLinkDirections()
     {
-        this.link_directions_element = this.element.querySelector('.link-directions');
-        this.link_directions_element.style.display = 'block';
-        this.link_directions_element.addEventListener('mouseleave',
-            (e) => {e.target.style.display = 'none';});
+//        this.link_directions_element = this.element.querySelector('.link-directions');
+//        this.link_directions_element.style.display = 'block';
+//        this.link_directions_element.addEventListener('mouseleave',
+//            (e) => {e.target.style.display = 'none';});
     }
 
     RegisterEvents()
@@ -50,6 +56,8 @@ export class Node
 
     SetPosition(x, y)
     {
+        this.x = x;
+        this.y = y;
         this.element.style.left = `${x}px`;
         this.element.style.top = `${y}px`;
     }
@@ -57,5 +65,12 @@ export class Node
     AddEvent(event)
     {
         this.events.push(event);
+    }
+
+    UpdateDisplayName()
+    {
+        let value = this.name;
+        if (value.length >= maxDisplayNameLength) {value = value.slice(0, maxDisplayNameLength);}
+        this.element.querySelector('.node-name').textContent = value;
     }
 }

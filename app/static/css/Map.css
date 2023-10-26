@@ -90,8 +90,8 @@ section
 .node
 {
     position: absolute;
-    width: 5vh;
-    height: 2vh;
+    width: 6vh;
+    height: 3vh;
     text-align: center;
     background-color: #69e9f1;
     color: #fff;
@@ -104,6 +104,13 @@ section
 .node:hover
 {
     cursor: pointer;
+}
+
+.node span
+{
+    display: block;
+    font-size: 1vh;
+    width: 100%;
 }
 
 .available-nodes

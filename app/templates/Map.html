@@ -17,6 +17,7 @@
                 <div class="nodes">
                     <div style="display: none;" class="node" id="default-node">
                         Test
+                        <span class="node-name"></span>
                         <div class="link-directions">
                             <span id="up">o</span>
                             <span id="right">o</span>
@@ -158,7 +159,6 @@
         </div>
 
         <div class="event-objects" id="default-objects"></div>
-
         <div class="object-actions" id="default-actions"></div>
     </div>
 
@@ -168,10 +168,47 @@
 {% block js %}
     <script type="module">
         import {map} from '/static/js/map/NodeMap.js';
-        window.NewNode = (nodeType) => map.Add(nodeType)
-        //function NewNode(nodeType) {map.Add(nodeType);}
+        import {serialize, deserialize} from '/static/js/map/Serializer.js';
 
-        const buttons = document.querySelectorAll('.available-node');
+        window.NewNode = (nodeType) => {map.Add(nodeType);}
+        window.serialize = serialize;
+        window.deserialize = deserialize;
+        window.map = map;
+
+        window.SaveQuest = (questID) =>
+        {
+            localStorage.setItem("Nodes", serialize(map.nodes));
+            localStorage.setItem("Links", serialize(map.links));
+        }
+
+        if (localStorage.hasOwnProperty("Nodes"))
+        {
+            let nodes = deserialize(localStorage["Nodes"]);
+
+            for(let node of nodes)
+            {
+                NewNode(node.type);
+                let newNode = map.nodes[map.nodes.length - 1];
+
+                newNode.name = node.name;
+                newNode.description = node.description;
+                newNode.SetPosition(node.x, node.y);
+                newNode.links = node.links;
+                // newNode.events = node.events;
+
+                newNode.UpdateDisplayName();
+            }
+        }
+
+        if (localStorage.hasOwnProperty("Links"))
+        {
+            let links = deserialize(localStorage["Links"]);
+
+            for(let link of links)
+            {
+                map.NewLink(link.startNodeID, link.endNodeID);
+            }
+        }
     </script>
     <script src="/static/js/map/ActionButtons.js"></script>
 {% endblock %}
