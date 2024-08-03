@@ -5,7 +5,7 @@ import ForceGraph2D, { NodeObject } from 'react-force-graph-2d';
 import './App.css'
 
 function App() {
-  const [data, setData] = useState({ nodes: [{ id: 1 }], links: [] as { source?: number, target?: number }[] });
+  const [data, setData] = useState({ nodes: [{ id: 0 }], links: [] as { source?: number, target?: number }[] });
 
   useEffect(() => {
     setInterval(() => {
@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   const download = () => {
-    const str = JSON.stringify(data);
+    const str = JSON.stringify(data, null, 2);
     const bytes = new TextEncoder().encode(str);  
     const url = window.URL.createObjectURL(new Blob([bytes], { type: "application/json" }));
     const link = document.createElement("a");
