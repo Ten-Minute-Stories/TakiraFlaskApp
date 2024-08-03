@@ -31,7 +31,7 @@ function App() {
   }
   
   const nodePaint = ({ x, y }: NodeObject, color: string, ctx: CanvasRenderingContext2D) => {
-    if(typeof x !== 'number' || typeof x !== 'number') return new Error('data в говне')
+    if(typeof x !== 'number' || typeof y !== 'number') return new Error('data в говне')
 
     ctx.fillStyle = color;
     const width = 10
